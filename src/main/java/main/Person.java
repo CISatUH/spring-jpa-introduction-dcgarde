@@ -3,7 +3,7 @@ package main;
 import javax.persistence.*;
 import java.util.Objects;
 
-@Entity
+@Entity //component scan
 public class Person {
     private int id;
     private String name;
