@@ -1,24 +1,23 @@
 package main;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
 public class Manager {
-    private Integer id;
+    private int id;
     private String firstName;
     private String lastName;
     private String department;
 
-    @Basic
-    @Column(name = "ID", nullable = true)
-    public Integer getId() {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID", nullable = false)
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -57,7 +56,7 @@ public class Manager {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Manager manager = (Manager) o;
-        return Objects.equals(id, manager.id) &&
+        return id == manager.id &&
                 Objects.equals(firstName, manager.firstName) &&
                 Objects.equals(lastName, manager.lastName) &&
                 Objects.equals(department, manager.department);
